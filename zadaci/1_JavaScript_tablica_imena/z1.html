@@ -1,0 +1,121 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zadatak 1</title>
+  <script src="jquery-mobile/jquery-1.6.4.min.js"       type="text/javascript"></script>
+  <script src="jquery-mobile/jquery.mobile-1.0.min.js"  type="text/javascript"></script>
+  <style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+	border: 2px solid black;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.crvena
+{
+	background-color: #f99;
+}
+.plava
+{
+	background-color: #99f;
+}
+.zelena
+{
+	background-color: #9f9;
+}
+</style>
+</head>
+
+<body onload="getColors('theTable')">
+  <table id="theTable">
+    <tr>
+	  <td>luka</td>
+	  <td>pero</td>
+	  <td>jure</td>
+	  <td>mate</td>
+	</tr>
+    <tr>
+	  <td>mirko</td>
+	  <td>ante</td>
+	  <td>slavko</td>
+	  <td>ivan</td>
+	</tr>
+    <tr>
+	  <td colspan="2">tomislav</td>
+	  <td>zdravko</td>
+	  <td>ante</td>
+	</tr>
+    <tr>
+	  <td>josip</td>
+	  <td>lovro</td>
+	  <td>ivan</td>
+	  <td>šimun</td>
+	</tr>
+    <tr>
+	  <td>gojko</td>
+	  <td colspan="3">marinko</td>
+	</tr>
+    <tr>
+	  <td>veljko</td>
+	  <td colspan="2">ivan</td>
+	  <td>ranko</td>
+	</tr>
+    <tr>
+	  <td>milan</td>
+	  <td>karlo</td>
+	  <td>luka</td>
+	  <td>adam</td>
+	</tr>
+  </table>
+</body>
+
+<script>
+	var colors = new Array('#f99','#99f','#9f9');
+
+	function getColors(id){ 
+       if(document.getElementsByTagName){  
+          var table = document.getElementById(id);   
+          var rows = table.getElementsByTagName("td");   
+          for(i = 0; i < rows.length; i++){           
+			//TwoColorsTest(rows[i], i);  
+			ColorRows(rows[i], i);  
+        } 
+       } 
+    }
+	function TwoColorsTest(row, i){
+	if(i % 2 == 0){
+		row.className = "crvena";
+	}else{
+		row.className = "plava";
+	}
+
+}
+function ColorRows(row, i){
+	row.style.backgroundColor = colors[i % colors.length];
+	var allTableCells=document.getElementsByTagName('td');
+
+	for(var i=0,max=allTableCells.length;i<max;i++)
+	{
+		var node=allTableCells[i];
+		var currentText=node.childNodes[0].nodeValue;
+		if(currentText==="ivan"){
+			node.style.backgroundColor="white";
+			node.style.fontWeight="bold";
+
+		}
+	}
+}
+
+</script>
+</html>
